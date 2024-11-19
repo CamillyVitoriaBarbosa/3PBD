@@ -49,41 +49,34 @@ CREATE TABLE empregado_projeto (
 
 ALTER TABLE empregado_projeto ADD CONSTRAINT empregado_projeto_pk PRIMARY KEY ( rg_empregado, numero_projeto );
 
-ALTER TABLE EMPREGADO
-ADD CONSTRAINT FK_EMPREGADO_DEPARTAMENTO FOREIGN KEY (Depto)
-REFERENCES DEPARTAMENTO(Numero);
+ALTER TABLE empregado
+ADD CONSTRAINT fk_empregado_departamento FOREIGN KEY (depto)
+REFERENCES deapartamento(numero);
 
--- Adicionando a chave estrangeira na tabela EMPREGADO para EMPREGADO (Supervisor)
-ALTER TABLE EMPREGADO
-ADD CONSTRAINT FK_EMPREGADO_SUPERVISOR FOREIGN KEY (RG_Supervisor)
-REFERENCES EMPREGADO(RG);
+ALTER TABLE empregado
+ADD CONSTRAINT fk_empregado_supervisor FOREIGN KEY (rg_supervisor)
+REFERENCES empregado(rg);
 
--- Adicionando a chave estrangeira na tabela DEPENDENTES para EMPREGADO
-ALTER TABLE DEPENDENTES
-ADD CONSTRAINT FK_DEPENDENTES_RESPONSAVEL FOREIGN KEY (RG_Responsavel)
-REFERENCES EMPREGADO(RG);
+ALTER TABLE dependentes
+ADD CONSTRAINT fk_dependentes_responsavel FOREIGN KEY (rg_responsavel)
+REFERENCES empregado(rg);
 
--- Adicionando a chave estrangeira na tabela DEPARTAMENTO para EMPREGADO (Gerente)
-ALTER TABLE DEPARTAMENTO
-ADD CONSTRAINT FK_DEPARTAMENTO_GERENTE FOREIGN KEY (RG_Gerente)
-REFERENCES EMPREGADO(RG);
+ALTER TABLE departamento
+ADD CONSTRAINT fk_departamento_gerente FOREIGN KEY (rg_gerente)
+REFERENCES empregado(rg);
 
--- Adicionando a chave estrangeira na tabela DEPARTAMENTO_PROJETO para DEPARTAMENTO
-ALTER TABLE DEPARTAMENTO_PROJETO
-ADD CONSTRAINT FK_DEPARTAMENTO_PROJETO_DEPARTAMENTO FOREIGN KEY (Numero_Depto)
-REFERENCES DEPARTAMENTO(Numero);
+ALTER TABLE departamento_projeto
+ADD CONSTRAINT fk_departamento_projeto_departamento FOREIGN KEY (numero_depto)
+REFERENCES departamento(numero);
 
--- Adicionando a chave estrangeira na tabela DEPARTAMENTO_PROJETO para PROJETO
-ALTER TABLE DEPARTAMENTO_PROJETO
-ADD CONSTRAINT FK_DEPARTAMENTO_PROJETO_PROJETO FOREIGN KEY (Numero_Projeto)
-REFERENCES PROJETO(Numero);
+ALTER TABLE departamento_projeto
+ADD CONSTRAINT fk_departamento_projeto_projeto FOREIGN KEY (numero_projeto)
+REFERENCES projeto(numero);
 
--- Adicionando a chave estrangeira na tabela EMPREGADO_PROJETO para EMPREGADO
-ALTER TABLE EMPREGADO_PROJETO
-ADD CONSTRAINT FK_EMPREGADO_PROJETO_EMPREGADO FOREIGN KEY (RG_Empregado)
-REFERENCES EMPREGADO(RG);
+ALTER TABLE empregado_projeto
+ADD CONSTRAINT fk_empregado_projeto_empregado FOREIGN KEY (rg_empregado)
+REFERENCES empregado(rg);
 
--- Adicionando a chave estrangeira na tabela EMPREGADO_PROJETO para PROJETO
-ALTER TABLE EMPREGADO_PROJETO
-ADD CONSTRAINT FK_EMPREGADO_PROJETO_PROJETO FOREIGN KEY (Numero_Projeto)
-REFERENCES PROJETO(Numero);
+ALTER TABLE empregado_projeto
+ADD CONSTRAINT fk_empregado_projeto_projeto FOREIGN KEY (numero_projeto)
+REFERENCES projeto(numero);
